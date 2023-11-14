@@ -2,13 +2,8 @@ import os
 import rasterio
 from rasterio.enums import Resampling
 import numpy as np
-from rasterio.merge import merge
-import MetaArray
-import tifffile
-from PIL import Image
-from rasterio import CRS
 
-def resize(input_path, output_path, input_res):
+def resize(input_path, input_res):
     upscale_factor = int(input_res / 10)
     with rasterio.open(input_path) as dataset:
 
@@ -87,20 +82,18 @@ for image in folders:
             if current_image.count('B08') != 0:
                 b8_path = os.path.join(images_path, 'R10m', current_image)
 
-
-    b1 = resize(b1_path, os.path.join(output_path, 'b1.tiff'), 60)
-    b2 = resize(b2_path, os.path.join(output_path, 'b1.tiff'), 10)
-    b3 = resize(b3_path, os.path.join(output_path, 'b1.tiff'), 10)
-    b4 = resize(b4_path, os.path.join(output_path, 'b1.tiff'), 10)
-    b5 = resize(b5_path, os.path.join(output_path, 'b5.tiff'), 20)
-    b6 = resize(b6_path, os.path.join(output_path, 'b6.tiff'), 20)
-    b7 = resize(b7_path, os.path.join(output_path, 'b7.tiff'), 20)
-    b8 = resize(b8_path, os.path.join(output_path, 'b1.tiff'), 10)
-    b8a = resize(b8a_path, os.path.join(output_path, 'b8a.tiff'), 20)
-    b9 = resize(b9_path, os.path.join(output_path, 'b9.tiff'), 60)
-    b11 = resize(b11_path, os.path.join(output_path, 'b11.tiff'), 20)
-    b12 = resize(b12_path, os.path.join(output_path, 'b12.tiff'), 20)
-
+    b1 = resize(b1_path, 60)
+    b2 = resize(b2_path, 10)
+    b3 = resize(b3_path, 10)
+    b4 = resize(b4_path, 10)
+    b5 = resize(b5_path, 20)
+    b6 = resize(b6_path, 20)
+    b7 = resize(b7_path, 20)
+    b8 = resize(b8_path, 10)
+    b8a = resize(b8a_path, 20)
+    b9 = resize(b9_path, 60)
+    b11 = resize(b11_path, 20)
+    b12 = resize(b12_path, 20)
 
     # Save metadata from one band
     source = rasterio.open(b2_path)
