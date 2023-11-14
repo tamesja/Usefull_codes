@@ -19,6 +19,7 @@ def read_band(current_band):
         )
         return data
 
+
 # Define where the bands are (named as b1.tif, b2.tif...)
 main_path = 'your_path'
 
