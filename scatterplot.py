@@ -2,7 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 
-# DATA MUST BE NUMPY ARRAYS
+'''
+###############################################
+## Print a scatter plot with equation and R2 ##
+###############################################
+'''
+
+
+# INPUT DATA MUST BE NUMPY ARRAYS
 np.random.seed(42)
 X = np.random.rand(50) * 10
 Y = 2 * X + 1 + np.random.randn(50)
